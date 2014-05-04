@@ -41,13 +41,28 @@
    </property>
    <widget class="QMenu" name="menuGauGo">
     <property name="title">
-     <string>Board</string>
+     <string>&amp;Board</string>
     </property>
+    <widget class="QMenu" name="menuSize">
+     <property name="title">
+      <string>Size</string>
+     </property>
+     <addaction name="action9x9"/>
+     <addaction name="action13x13"/>
+     <addaction name="action19x19"/>
+    </widget>
     <addaction name="action_Clear"/>
+    <addaction name="menuSize"/>
+   </widget>
+   <widget class="QMenu" name="menuArchive">
+    <property name="title">
+     <string>&amp;Archive</string>
+    </property>
     <addaction name="action_Open_SGF"/>
     <addaction name="action_Save_to_SGF"/>
    </widget>
    <addaction name="menuGauGo"/>
+   <addaction name="menuArchive"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="movable">
@@ -141,6 +156,9 @@
    <property name="toolTip">
     <string>Clears the board</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="action_Open_SGF">
    <property name="text">
@@ -149,6 +167,9 @@
    <property name="toolTip">
     <string>Set board to SGF file</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="action_Save_to_SGF">
    <property name="text">
@@ -156,6 +177,42 @@
    </property>
    <property name="toolTip">
     <string>Saves current position to SGF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action9x9">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>9x9</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+9</string>
+   </property>
+  </action>
+  <action name="action13x13">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>13x13</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+3</string>
+   </property>
+  </action>
+  <action name="action19x19">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>19x19</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
    </property>
   </action>
  </widget>
@@ -176,8 +233,8 @@
    <slot>onReceiveGTPInput()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>112</x>
-     <y>806</y>
+     <x>115</x>
+     <y>916</y>
     </hint>
     <hint type="destinationlabel">
      <x>105</x>

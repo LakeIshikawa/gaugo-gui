@@ -50,6 +50,16 @@ public slots:
     void onReceiveGTPComment(QString &command, QString &comment);
 
 
+private slots:
+    void on_action_Clear_triggered();
+    void on_action9x9_triggered();
+    void on_action13x13_triggered();
+    void on_action19x19_triggered();
+
+    void on_action_Open_SGF_triggered();
+
+    void on_action_Save_to_SGF_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -58,6 +68,9 @@ private:
 
     // GTP result parsing
     void parseBoard(QStringList &lines);
+
+    // Update size menu checkboxes
+    void updateSizeMenu(int size);
 };
 
 #endif // MAINWINDOW_H
