@@ -22,6 +22,12 @@ public:
      */
     void synchronizeBoard();
 
+    /**
+     * @brief Send a GTP command and synchronize
+     * @param command Arbitrary gtp command
+     */
+    void gtpAndSynch(QString &command);
+
 public slots:
     /**
      * @brief Play a move
@@ -60,14 +66,21 @@ private slots:
 
     void on_action_Save_to_SGF_triggered();
 
+    void on_action_Undo_triggered();
+
+    void on_action_Redo_triggered();
+
 private:
     Ui::MainWindow *ui;
 
     // Gaugo talker
     GauGoTalker gaugo;
+    // Synch command that are not to be logged
+    QStringList noLogCommands;
 
     // GTP result parsing
     void parseBoard(QStringList &lines);
+    void parseUCTTree(QStringList &lines);
 
     // Update size menu checkboxes
     void updateSizeMenu(int size);

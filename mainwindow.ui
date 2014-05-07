@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>960</height>
+    <height>980</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>GauGo</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
@@ -22,8 +22,68 @@
       </item>
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
-        <widget class="QWidget" name="page"/>
-        <widget class="QWidget" name="page_2"/>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="page">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="UctNodesTable" name="uctNodesTable">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="columnCount">
+             <number>6</number>
+            </property>
+            <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>move</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>playouts</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>wr(UCT)</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>wr(AMAF)</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>wr(all)</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>UCT</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_2">
+         <layout class="QVBoxLayout" name="verticalLayout_4"/>
+        </widget>
        </widget>
       </item>
      </layout>
@@ -53,6 +113,8 @@
     </widget>
     <addaction name="action_Clear"/>
     <addaction name="menuSize"/>
+    <addaction name="action_Undo"/>
+    <addaction name="action_Redo"/>
    </widget>
    <widget class="QMenu" name="menuArchive">
     <property name="title">
@@ -78,6 +140,12 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="TabTools">
+   <property name="minimumSize">
+    <size>
+     <width>141</width>
+     <height>213</height>
+    </size>
+   </property>
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
@@ -96,7 +164,7 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QTabWidget" name="tabTools">
+      <widget class="QTabWidget" name="GTPSynchTab">
        <property name="currentIndex">
         <number>0</number>
        </property>
@@ -139,10 +207,15 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="tab_2">
+       <widget class="QWidget" name="tabGTPSynch">
         <attribute name="title">
-         <string>Tab 2</string>
+         <string>GTP(synch)</string>
         </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPlainTextEdit" name="GTPSynch"/>
+         </item>
+        </layout>
        </widget>
       </widget>
      </item>
@@ -215,6 +288,22 @@
     <string>Ctrl+1</string>
    </property>
   </action>
+  <action name="action_Undo">
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="action_Redo">
+   <property name="text">
+    <string>&amp;Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -222,6 +311,11 @@
    <class>BoardView</class>
    <extends>QGraphicsView</extends>
    <header>boardview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>UctNodesTable</class>
+   <extends>QTableWidget</extends>
+   <header>uctnodestable.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -3,13 +3,10 @@
 
 GauGoTalker::GauGoTalker(QObject *parent) : QObject(parent)
 {
-    noLogCommands.append("board");
 }
 
-bool GauGoTalker::start(QPlainTextEdit* output)
+bool GauGoTalker::start()
 {
-    this->output = output;
-
     // Register for read signals
     connect(&gauGo, SIGNAL(readyRead()), this, SLOT(onReadOutput()));
 
@@ -23,12 +20,6 @@ bool GauGoTalker::start(QPlainTextEdit* output)
 void GauGoTalker::sendGTPCommand(QString &command)
 {
     this->commandList.append(command);
-
-    // Log
-    if( !noLogCommands.contains(command) ){
-        output->appendPlainText(QString("<< ").append(command));
-    }
-
     gauGo.write(qPrintable(command.append("\n")));
 }
 
@@ -44,11 +35,6 @@ void GauGoTalker::onReadOutput()
     QMutableListIterator<QString> i(lines);
     while(i.hasNext()){
         QString line = i.next();
-
-        // Log
-        if( !noLogCommands.contains(commandList.first()) ){
-            output->appendPlainText(line);
-        }
 
         // Comments notified one by one
         if( line.startsWith('#') ){

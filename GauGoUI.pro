@@ -16,11 +16,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     gaugotalker.cpp \
     boardview.cpp \
-    boarditem.cpp
+    boarditem.cpp \
+    uctnode.cpp \
+    uctnodestable.cpp
 
 HEADERS  += mainwindow.h \
     gaugotalker.h \
     boardview.h \
-    boarditem.h
+    boarditem.h \
+    uctnode.h \
+    uctnodestable.h
 
 FORMS    += mainwindow.ui

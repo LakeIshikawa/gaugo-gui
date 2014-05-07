@@ -18,7 +18,7 @@ public:
      * @brief Fire up gauGo
      * @return true-success false-failure
      */
-    bool start(QPlainTextEdit* output);
+    bool start();
 
     /**
      * @brief Execute a GTP command to gauGo
@@ -45,12 +45,6 @@ private:
 
     // Currently processing command
     QStringList commandList;
-
-    // Textedit to write output to
-    QPlainTextEdit* output;
-
-    // Synch command that are not to be logged
-    QStringList noLogCommands;
 };
 
 #endif // GAUGOTALKER_H

@@ -29,7 +29,7 @@ QPoint BoardItem::getIntersectionPoint(int intX, int intY)
 
 QRectF BoardItem::boundingRect() const
 {
-    int edge = getStoneSize()/2 + 6;
+    int edge = getStoneSize()/2 + 26;
     return QRectF(-edge, -edge, BOARD_S+edge*2, BOARD_S+edge*2);
 }
 
@@ -57,9 +57,13 @@ void BoardItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     float oneCell = (float)BOARD_S/(size-1);
     for( int x=0; x<size; x++ ){
         painter->drawLine(x*oneCell, 0, x*oneCell, BOARD_S);
+        // Label
+        painter->drawText(QPoint(x*oneCell-5, -20), QString(QChar('A'+x+(x>7))));
     }
     for( int y=0; y<size; y++){
         painter->drawLine(0, y*oneCell, BOARD_S, y*oneCell);
+        // Label
+        painter->drawText(QPoint(-30, y*oneCell+5), QString::number(y+1));
     }
 
     // Draw stars

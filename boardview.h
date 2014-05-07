@@ -2,6 +2,7 @@
 #define BOARDVIEW_H
 
 #include "boarditem.h"
+#include "uctnode.h"
 #include <QGraphicsView>
 
 class BoardView : public QGraphicsView
@@ -28,10 +29,31 @@ public:
     void setPosition(QString &position);
 
     /**
+     * @brief Set UCT tree node info about computed moves
+     * @param treePos All legal children evaluated in previous genmove
+     */
+    void setUCTTree(QList<UCTNode> treePos);
+
+    /**
      * @brief Set current turn (to display hovering stone)
      * @param turn 0-Black 1-White
      */
     void setTurn(int turn);
+
+    /**
+     * @brief Transform a move string to a pair of coordinates
+     * @param intersection The move string representation
+     * @return The board coordinate
+     */
+    static QPoint nameToPoint(const QString &intersection);
+
+    /**
+     * @brief Transform a pair of coordinates to a move string
+     * @param The board coordinate
+     * @return The move string representation
+     */
+    static QString pointToName(const QPoint& point);
+
 
 signals:
 
